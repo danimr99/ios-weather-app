@@ -1,24 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Ybc-xf-zC9">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Barcelona-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" xcode11CocoaTouchSystemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="18" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iGK-au-Jik">
+                                <rect key="frame" x="202.33333333333334" y="127" width="72.000000000000028" height="76.333333333333314"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="64"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="rainy" translatesAutoresizingMaskIntoConstraints="NO" id="4rG-Ad-bed">
+                                <rect key="frame" x="72.333333333333329" y="115" width="99.999999999999986" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="qoR-OF-r6v"/>
+                                    <constraint firstAttribute="height" constant="100" id="qtj-L3-h2s"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ºC" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SrJ-d2-to0">
+                                <rect key="frame" x="286.33333333333331" y="126.99999999999999" width="36" height="37.333333333333329"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="32"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" red="0.1058823466" green="0.109803915" blue="0.27450981740000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="iGK-au-Jik" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23.999999999995225" id="46M-kA-XYV"/>
+                            <constraint firstItem="iGK-au-Jik" firstAttribute="leading" secondItem="4rG-Ad-bed" secondAttribute="trailing" constant="29.980443065945622" id="OQX-of-Glp"/>
+                            <constraint firstItem="iGK-au-Jik" firstAttribute="top" secondItem="SrJ-d2-to0" secondAttribute="top" id="PG5-BX-Sbz"/>
+                            <constraint firstItem="SrJ-d2-to0" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="23.999999999999986" id="QIO-0d-EVZ"/>
+                            <constraint firstItem="SrJ-d2-to0" firstAttribute="leading" secondItem="iGK-au-Jik" secondAttribute="trailing" constant="12" id="fp0-FD-zhm"/>
+                            <constraint firstItem="4rG-Ad-bed" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="11.99999999999568" id="fyT-lm-eDb"/>
+                            <constraint firstItem="4rG-Ad-bed" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="72.313776399283938" id="zgX-WD-rIQ"/>
+                        </constraints>
                     </view>
+                    <navigationItem key="navigationItem" title="Barcelona" id="xYB-mU-HPA">
+                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="search" id="eb7-gl-DKj"/>
+                    </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1008.3969465648854" y="-27.464788732394368"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="MaO-Zq-EEL">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Ybc-xf-zC9" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="QWz-KH-R4M">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <textAttributes key="titleTextAttributes">
+                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </textAttributes>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="RLt-kl-kXi"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YPZ-uE-ezX" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="81.679389312977094" y="-27.464788732394368"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="rainy" width="512" height="512"/>
+    </resources>
 </document>
