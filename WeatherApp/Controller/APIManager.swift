@@ -52,9 +52,9 @@ class APIManager {
                         let main = data!["main"] as? [String: Double]
                         
                         
-                        let temp = String(format: "%f", main!["temp"]!)
-                        let tempMax = String(format: "%f", main!["temp_max"]!)
-                        let tempMin = String(format: "%f", main!["temp_min"]!)
+                        let temp = String(format: "%0.1f", main!["temp"]!)
+                        let tempMax = String(format: "%0.1f", main!["temp_max"]!)
+                        let tempMin = String(format: "%0.1f", main!["temp_min"]!)
                         
                         let weather = WeatherData(main: weatherMain as! String, description: weatherDescription as! String, temp: temp, tempMax: tempMax, tempMin: tempMin)
                         
@@ -96,9 +96,9 @@ class APIManager {
                         for item in list {
                             let date = Date(timeIntervalSince1970: item["dt"] as! Double)
                             let description = (item["weather"] as! [[String: Any]]).first!["description"] as! String
-                            let temp = String(format: "%f", (item["main"] as! [String: Double])["temp"]!)
-                            let tempMin = String(format: "%f", (item["main"] as! [String: Double])["temp_min"]!)
-                            let tempMax = String(format: "%f", (item["main"] as! [String: Double])["temp_max"]!)
+                            let temp = String(format: "%0.1f", (item["main"] as! [String: Double])["temp"]!)
+                            let tempMin = String(format: "%0.1f", (item["main"] as! [String: Double])["temp_min"]!)
+                            let tempMax = String(format: "%0.1f", (item["main"] as! [String: Double])["temp_max"]!)
 
                             forecast.append(ForecastData(date: date, weatherDescription: description, temp: temp, tempMax: tempMax, tempMin: tempMin))
                         }

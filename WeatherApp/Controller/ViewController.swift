@@ -8,8 +8,17 @@
 
 import UIKit
 
-class ViewController: UIViewController {
-    var cityName: String = "Barcelona"
+class ViewController: UIViewController, UITableViewDelegate{
+    
+    @IBOutlet weak var weatherImage: UIImageView!
+    
+    @IBOutlet weak var currentTempLabel: UILabel!
+    @IBOutlet weak var minTempLabel: UILabel!
+    
+    @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var weatherDescriptionLabel: UILabel!
+    
+    var cityName: String = "Madrid"
     var forecastData: [ForecastData] = []
     
     /**
@@ -18,6 +27,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
        setupView()
+        self.title = cityName
     }
     /**
     Helpers
@@ -25,10 +35,18 @@ class ViewController: UIViewController {
     func setupView() {
         APIManager.shared.requestWeatherForCity(cityName, "es") { ( response: WeatherData) in
             DispatchQueue.main.async {
-                /**
-                    Update Main Weather Data
-                 */
-                print(response.tempMax!);
+                self.currentTempLabel.text = "\(String(describing: response.temp!))ºC"
+                self.maxTempLabel.text = "\(String(describing: response.tempMax!))ºC"
+                self.minTempLabel.text = "\(String(describing: response.tempMin!))ºC"
+                self.weatherDescriptionLabel.text = response.description!
+                
+                switch response.description{
+                case "clear sky": self.weatherImage.image = UIImage(named: "sunny")
+                    break
+                    
+                default: break
+                    
+                }
             }
         }
         
@@ -38,7 +56,8 @@ class ViewController: UIViewController {
                     Update Table View Data
                  */
                 self.forecastData=data
-                print(self.forecastData[0].temp!)
+                print(self.forecastData[0].date!)
+                print(self.forecastData[1].date!)
             }
         }
     }
