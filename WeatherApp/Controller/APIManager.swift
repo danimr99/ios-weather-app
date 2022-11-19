@@ -8,14 +8,18 @@
 
 import Foundation
 
-private let mainBaseURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=<API_KEY>&q="
-private let forecastBaseURL = "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=<API_KEY>&q="
+private let mainBaseURL = "https://api.openweathermap.org/data/2.5/weather?units=metric&appid=\(API_KEY)&q="
+private let forecastBaseURL = "https://api.openweathermap.org/data/2.5/forecast?units=metric&appid=\(API_KEY)&q="
 
 class APIManager {
     static let shared = APIManager()
     
     init() {}
+    // MARK: - Custom request
     
+   
+   
+    // MARK: - Pre Built requests
     // Network requests
     func requestWeatherForCity(_ city: String, _ countryCode: String,
                                callback: @escaping (_ data: WeatherData) -> Void) {
@@ -34,9 +38,29 @@ class APIManager {
                 if let data = data {
                     if let jsonString = String(data: data, encoding: .utf8) {
                         let data = self.convertToDictionary(text: jsonString)
-                        /**
-                            TODO: Complete
-                         */
+                        
+                       
+                        //var weatherMain, weatherDescription: [String:Any]
+                        
+                        
+                        let weatherArray = data!["weather"] as? [[String:Any]]
+                        let weatherFirst = weatherArray?.first as? [String : Any]
+                        let weatherMain = weatherFirst!["main"]
+                        let weatherDescription = weatherFirst!["description"]
+                        
+                       
+                        let main = data!["main"] as? [String: Double]
+                        
+                        
+                        let temp = String(format: "%f", main!["temp"]!)
+                        let tempMax = String(format: "%f", main!["temp_max"]!)
+                        let tempMin = String(format: "%f", main!["temp_min"]!)
+                        
+                        let weather = WeatherData(main: weatherMain as! String, description: weatherDescription as! String, temp: temp, tempMax: tempMax, tempMin: tempMin)
+                        
+                       callback(weather)
+                       
+                        
                     }
                 }
             }

@@ -66,6 +66,7 @@
 			children = (
 				12AE20972912EB43004D2BE8 /* AppDelegate.swift */,
 				12AE20992912EB43004D2BE8 /* SceneDelegate.swift */,
+				9100421B29280D860015BAD0 /* Constants */,
 				28827F992922AE4300CF6D99 /* Model */,
 				28827F9A2922AEA100CF6D99 /* View */,
 				28827F9B2922AEBB00CF6D99 /* Controller */,
@@ -78,7 +79,6 @@
 		28827F992922AE4300CF6D99 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				28827F972922A93C00CF6D99 /* Constants.swift */,
 				12AE20B22912EBDA004D2BE8 /* WeatherData.swift */,
 				28827F9C2922AF0C00CF6D99 /* ForecastData.swift */,
 			);
@@ -101,6 +101,14 @@
 				12AE20B12912EBDA004D2BE8 /* ViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		9100421B29280D860015BAD0 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				28827F972922A93C00CF6D99 /* Constants.swift */,
+			);
+			path = Constants;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

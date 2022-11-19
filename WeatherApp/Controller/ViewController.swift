@@ -17,7 +17,7 @@ class ViewController: UIViewController {
      */
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       setupView()
     }
     /**
     Helpers
@@ -28,6 +28,7 @@ class ViewController: UIViewController {
                 /**
                     Update Main Weather Data
                  */
+                print(response.tempMax!);
             }
         }
         
