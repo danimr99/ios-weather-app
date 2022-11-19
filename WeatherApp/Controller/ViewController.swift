@@ -37,6 +37,8 @@ class ViewController: UIViewController {
                 /**
                     Update Table View Data
                  */
+                self.forecastData=data
+                print(self.forecastData[0].temp!)
             }
         }
     }

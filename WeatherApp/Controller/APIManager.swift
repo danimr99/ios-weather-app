@@ -68,6 +68,8 @@ class APIManager {
         dataTask.resume()
     }
     
+    // MARK: - Request Forecast
+    
     func requestForecastForCity(_ city: String, _ countryCode: String,
                                 callback: @escaping (_ data: [ForecastData]) -> Void) {
         
@@ -87,6 +89,21 @@ class APIManager {
                         /**
                             TODO: Complete
                          */
+                        let list = data!["list"] as! [[String: Any]]
+
+                        var forecast: [ForecastData] = []
+
+                        for item in list {
+                            let date = Date(timeIntervalSince1970: item["dt"] as! Double)
+                            let description = (item["weather"] as! [[String: Any]]).first!["description"] as! String
+                            let temp = String(format: "%f", (item["main"] as! [String: Double])["temp"]!)
+                            let tempMin = String(format: "%f", (item["main"] as! [String: Double])["temp_min"]!)
+                            let tempMax = String(format: "%f", (item["main"] as! [String: Double])["temp_max"]!)
+
+                            forecast.append(ForecastData(date: date, weatherDescription: description, temp: temp, tempMax: tempMax, tempMin: tempMin))
+                        }
+
+                        callback(forecast)
                     }
                 }
             }
@@ -94,6 +111,7 @@ class APIManager {
         dataTask.resume()
     }
     
+    //MARK: - DICTIONARY
     /**
         Helpers
      */
