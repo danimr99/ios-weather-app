@@ -18,19 +18,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var forecastTableView: UITableView!
     
     
-    // MARK: - Variables
+    // MARK: - Properties
     var cityName: String = "Barcelona"
     var forecastData: [ForecastData] = []
     
-    /**
-    View lifecycle methods
-     */
+    // MARK: - View lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupView()
         
-        self.title = cityName
+        // Delegate forecast table view
         self.forecastTableView.delegate = self
         self.forecastTableView.dataSource = self
     }
@@ -63,19 +61,17 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    /**
-    Helpers
-     */
+    // MARK: - Helpers
     func setupView() {
+        self.title = self.cityName
+        
         APIManager.shared.requestWeatherForCity(cityName, "es") { ( response: WeatherData) in
             DispatchQueue.main.async {
                 self.currentTempLabel.text = "\(String(describing: response.temp!))ºC"
                 self.maxTempLabel.text = "\(String(describing: response.tempMax!))ºC"
                 self.minTempLabel.text = "\(String(describing: response.tempMin!))ºC"
                 self.weatherDescriptionLabel.text = response.description!
-                
                 self.weatherImage.image = UIImage(named: self.getImageType(weatherDescription: response.description!))
- 
             }
         }
         

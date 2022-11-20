@@ -74,6 +74,7 @@
 				28827F992922AE4300CF6D99 /* Model */,
 				28827F9A2922AEA100CF6D99 /* View */,
 				28827F9B2922AEBB00CF6D99 /* Controller */,
+				28CE9BF7292A81D3004D2DFE /* Utils */,
 				12AE20A02912EB44004D2BE8 /* Assets.xcassets */,
 				12AE20A52912EB44004D2BE8 /* Info.plist */,
 			);
@@ -101,12 +102,19 @@
 		28827F9B2922AEBB00CF6D99 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				12AE20B32912EBDA004D2BE8 /* APIManager.swift */,
 				12AE20B12912EBDA004D2BE8 /* ViewController.swift */,
 				9172BAA5292963FA00813A21 /* ForecastCell.swift */,
 				28CE9BE9292A5A26004D2DFE /* SearchCityViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		28CE9BF7292A81D3004D2DFE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				12AE20B32912EBDA004D2BE8 /* APIManager.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		9100421B29280D860015BAD0 /* Constants */ = {
