@@ -1,9 +1,7 @@
 //
 //  ViewController.swift
-//  NetworkDemo
 //
-//  Created by Alex Tarragó on 01/11/2022.
-//  Copyright © 2022 Dribba GmbH. All rights reserved.
+//  Created by Daniel Muelle on 14/11/2022.
 //
 
 import UIKit
@@ -35,11 +33,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             self.setupLocationManager()
         }
         
-        
         // Delegate forecast table view
         self.forecastTableView.delegate = self
         self.forecastTableView.dataSource = self
-        
         
         setupView()
     }
@@ -134,7 +130,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         }
     }
     
-    //MARK: - Location services
+    // MARK: - Location services
     private func setupLocationManager(){
         self.locationManager.delegate = self
         self.locationManager.distanceFilter = kCLDistanceFilterNone
@@ -147,7 +143,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         
         if !locations.isEmpty {
             location =  locations.last!
-            fetchCityAndCountry(from: location) { city, isoCountryCode, country, error in
+            self.fetchCityAndCountry(from: location) { city, isoCountryCode, country, error in
                 guard let city = city, let countryCode = isoCountryCode, let country = country, error == nil else { return }
                 
                 self.cityName = city.trimmingCharacters(in: .whitespaces)
@@ -155,6 +151,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.countryName = country
                 
                 self.setupView()
+                
                 self.locationManager.stopUpdatingLocation()
             }
         }
@@ -162,16 +159,11 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
   
     func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ isoCountryCode:  String?, _ country: String?, _ error: Error?) -> ()) {
             CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-                completion(placemarks?.first?.locality,
-                           placemarks?.first?.isoCountryCode,
-                           placemarks?.first?.country,
-                           error)
-                
+                completion(placemarks?.first?.locality, placemarks?.first?.isoCountryCode, placemarks?.first?.country, error)
             }
         }
     
     // MARK: - Handlers
-    
     @IBAction func resetUserLocationHandler(_ sender: Any) {
         self.setupLocationManager()
     }

@@ -1,9 +1,7 @@
 //
 //  WeatherData.swift
-//  NetworkDemo
 //
-//  Created by Alex on 1/11/22.
-//  Copyright © 2022 Dribba GmbH. All rights reserved.
+//  Created by Daniel Muelle on 14/11/22.
 //
 
 import Foundation
