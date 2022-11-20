@@ -15,12 +15,7 @@ class APIManager {
     static let shared = APIManager()
     
     init() {}
-    // MARK: - Custom request
-    
    
-   
-    // MARK: - Pre Built requests
-    // Network requests
     func requestWeatherForCity(_ city: String, _ countryCode: String,
                                callback: @escaping (_ data: WeatherData) -> Void) {
         
@@ -33,43 +28,32 @@ class APIManager {
             if (error != nil) {
                 print(error!)
             } else {
-                let httpResponse = response as? HTTPURLResponse
-                
                 if let data = data {
                     if let jsonString = String(data: data, encoding: .utf8) {
                         let data = self.convertToDictionary(text: jsonString)
                         
-                       
-                        //var weatherMain, weatherDescription: [String:Any]
-                        
-                        
+                        // Get main and description from dictionary
                         let weatherArray = data!["weather"] as? [[String:Any]]
                         let weatherFirst = weatherArray?.first as? [String : Any]
                         let weatherMain = weatherFirst!["main"]
                         let weatherDescription = weatherFirst!["description"]
                         
-                       
+                        // Get temperatures from dictionary
                         let main = data!["main"] as? [String: Double]
-                        
-                        
                         let temp = String(format: "%0.1f", main!["temp"]!)
                         let tempMax = String(format: "%0.1f", main!["temp_max"]!)
                         let tempMin = String(format: "%0.1f", main!["temp_min"]!)
                         
-                        let weather = WeatherData(main: weatherMain as! String, description: weatherDescription as! String, temp: temp, tempMax: tempMax, tempMin: tempMin)
+                        let weather = WeatherData(main: weatherMain as? String, description: weatherDescription as? String, temp: temp, tempMax: tempMax, tempMin: tempMin)
                         
                        callback(weather)
-                       
-                        
                     }
                 }
             }
         })
         dataTask.resume()
     }
-    
-    // MARK: - Request Forecast
-    
+        
     func requestForecastForCity(_ city: String, _ countryCode: String,
                                 callback: @escaping (_ data: [ForecastData]) -> Void) {
         
@@ -80,18 +64,15 @@ class APIManager {
         let dataTask = session.dataTask( with: request as URLRequest, completionHandler: { (data, response, error) -> Void in
             
             if (error != nil) {
-                print(error)
+                print(error!)
             } else {
-                let httpResponse = response as? HTTPURLResponse
                 if let data = data {
                     if let jsonString = String(data: data, encoding: .utf8) {
                         let data = self.convertToDictionary(text: jsonString)
-                        /**
-                            TODO: Complete
-                         */
-                        let list = data!["list"] as! [[String: Any]]
 
                         var forecast: [ForecastData] = []
+                        
+                        let list = data!["list"] as! [[String: Any]]
 
                         for item in list {
                             let date = Date(timeIntervalSince1970: item["dt"] as! Double)
@@ -111,7 +92,6 @@ class APIManager {
         dataTask.resume()
     }
     
-    //MARK: - DICTIONARY
     /**
         Helpers
      */
