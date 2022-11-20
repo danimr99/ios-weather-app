@@ -17,6 +17,7 @@
 		12AE20B62912EBDA004D2BE8 /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 12AE20B32912EBDA004D2BE8 /* APIManager.swift */; };
 		28827F982922A93C00CF6D99 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28827F972922A93C00CF6D99 /* Constants.swift */; };
 		28827F9D2922AF0C00CF6D99 /* ForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28827F9C2922AF0C00CF6D99 /* ForecastData.swift */; };
+		28CE9BEA292A5A26004D2DFE /* SearchCityViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 28CE9BE9292A5A26004D2DFE /* SearchCityViewController.swift */; };
 		9172BAA6292963FA00813A21 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9172BAA5292963FA00813A21 /* ForecastCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +34,7 @@
 		12AE20B32912EBDA004D2BE8 /* APIManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
 		28827F972922A93C00CF6D99 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		28827F9C2922AF0C00CF6D99 /* ForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastData.swift; sourceTree = "<group>"; };
+		28CE9BE9292A5A26004D2DFE /* SearchCityViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCityViewController.swift; sourceTree = "<group>"; };
 		9172BAA5292963FA00813A21 /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +104,7 @@
 				12AE20B32912EBDA004D2BE8 /* APIManager.swift */,
 				12AE20B12912EBDA004D2BE8 /* ViewController.swift */,
 				9172BAA5292963FA00813A21 /* ForecastCell.swift */,
+				28CE9BE9292A5A26004D2DFE /* SearchCityViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -188,6 +191,7 @@
 				12AE20B42912EBDA004D2BE8 /* ViewController.swift in Sources */,
 				12AE20982912EB43004D2BE8 /* AppDelegate.swift in Sources */,
 				12AE20B62912EBDA004D2BE8 /* APIManager.swift in Sources */,
+				28CE9BEA292A5A26004D2DFE /* SearchCityViewController.swift in Sources */,
 				12AE20B52912EBDA004D2BE8 /* WeatherData.swift in Sources */,
 				9172BAA6292963FA00813A21 /* ForecastCell.swift in Sources */,
 				28827F9D2922AF0C00CF6D99 /* ForecastData.swift in Sources */,
