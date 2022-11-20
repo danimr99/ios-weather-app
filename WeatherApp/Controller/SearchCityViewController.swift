@@ -13,10 +13,9 @@ class SearchCityViewController: UIViewController {
     @IBOutlet weak var searchCityInput: UITextField!
     
     // MARK: - Properties
-    
     var searchRequest = MKLocalSearch.Request()
-    var searchCityCallback: (_ location: String) -> Void = {
-        arg in
+    var searchCityCallback: (_ searchedCity: String, _ searchedCountry: String) -> Void = {
+        (city, country) in
     }
     
     // MARK: - Life Cycle
@@ -25,7 +24,7 @@ class SearchCityViewController: UIViewController {
     }
     
     // MARK: - Methods
-    private func showAlert(title: String, message: String) {
+    func showAlert(title: String, message: String) {
         // Create an alert
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
 
@@ -58,7 +57,8 @@ class SearchCityViewController: UIViewController {
             guard let location = results.first else { return }
             
             // Pass result to callback
-            self.searchCityCallback(location.placemark.title!)
+            self.searchCityCallback(location.placemark.title!, location.placemark.countryCode!)
+            self.navigationController?.popViewController(animated: true)
         }
     }
     

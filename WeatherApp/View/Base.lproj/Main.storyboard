@@ -167,7 +167,7 @@
                     <navigationItem key="navigationItem" title="Barcelona" id="xYB-mU-HPA">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="search" id="eb7-gl-DKj">
                             <connections>
-                                <segue destination="BWH-eo-CHZ" kind="show" id="xBk-7d-0F1"/>
+                                <segue destination="BWH-eo-CHZ" kind="show" identifier="searchCity" id="xBk-7d-0F1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
