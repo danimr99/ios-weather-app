@@ -124,7 +124,6 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.countryName = splittedLocation[1].folding(options: .diacriticInsensitive, locale: .current)
                 self.countryCode = searchedCountryCode.lowercased()
                 
-                
                 self.setupView()
             }
         }
@@ -158,10 +157,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     }
   
     func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ isoCountryCode:  String?, _ country: String?, _ error: Error?) -> ()) {
-            CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
-                completion(placemarks?.first?.locality, placemarks?.first?.isoCountryCode, placemarks?.first?.country, error)
-            }
+        CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+            completion(placemarks?.first?.locality, placemarks?.first?.isoCountryCode, placemarks?.first?.country, error)
         }
+    }
     
     // MARK: - Handlers
     @IBAction func resetUserLocationHandler(_ sender: Any) {

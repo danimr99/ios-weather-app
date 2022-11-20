@@ -1,9 +1,7 @@
 //
 //  APIManager.swift
-//  NetworkDemo
 //
-//  Created by Alex Tarragó on 1/11/2022.
-//  Copyright © 2022 Dribba GmbH. All rights reserved.
+//  Created by Daniel Muelle on 14/11/2022.
 //
 
 import Foundation
