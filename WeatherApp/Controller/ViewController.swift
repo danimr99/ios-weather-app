@@ -18,21 +18,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var forecastTableView: UITableView!
     
     
-    // MARK: - Variables
+    // MARK: - Properties
     var cityName: String = "Barcelona"
+    var countryName: String = "España"
+    var countryCode: String = "es"
     var forecastData: [ForecastData] = []
     
-    /**
-    View lifecycle methods
-     */
+    // MARK: - View lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setupView()
-        
-        self.title = cityName
+        // Delegate forecast table view
         self.forecastTableView.delegate = self
         self.forecastTableView.dataSource = self
+        
+        setupView()
     }
     
     // MARK: - Table view data source
@@ -63,23 +63,21 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         return cell
     }
     
-    /**
-    Helpers
-     */
+    // MARK: - Helpers
     func setupView() {
-        APIManager.shared.requestWeatherForCity(cityName, "es") { ( response: WeatherData) in
+        self.title = "\(self.cityName), \(self.countryName)"
+        
+        APIManager.shared.requestWeatherForCity(cityName, countryCode) { ( response: WeatherData) in
             DispatchQueue.main.async {
                 self.currentTempLabel.text = "\(String(describing: response.temp!))ºC"
                 self.maxTempLabel.text = "\(String(describing: response.tempMax!))ºC"
                 self.minTempLabel.text = "\(String(describing: response.tempMin!))ºC"
                 self.weatherDescriptionLabel.text = response.description!
-                
                 self.weatherImage.image = UIImage(named: self.getImageType(weatherDescription: response.description!))
- 
             }
         }
         
-        APIManager.shared.requestForecastForCity(cityName, "es") { data in
+        APIManager.shared.requestForecastForCity(cityName, countryCode) { data in
             DispatchQueue.main.async {
                 self.forecastData = data
                 self.forecastTableView.reloadData()
@@ -106,6 +104,24 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 
             default:
                 return "windy"
+        }
+    }
+    
+    
+    // MARK: - Segues
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "searchCity" {
+            let destination = segue.destination as! SearchCityViewController
+
+            destination.searchCityCallback = { (searchedCity, searchedCountryCode) in
+                let splittedLocation = searchedCity.components(separatedBy: ", ")
+                self.cityName = splittedLocation[0]
+                self.countryName = splittedLocation[1]
+                self.countryCode = searchedCountryCode.lowercased()
+                
+                
+                self.setupView()
+            }
         }
     }
 }

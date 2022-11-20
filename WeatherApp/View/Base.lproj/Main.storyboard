@@ -167,7 +167,7 @@
                     <navigationItem key="navigationItem" title="Barcelona" id="xYB-mU-HPA">
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="search" id="eb7-gl-DKj">
                             <connections>
-                                <segue destination="BWH-eo-CHZ" kind="show" id="xBk-7d-0F1"/>
+                                <segue destination="BWH-eo-CHZ" kind="show" identifier="searchCity" id="xBk-7d-0F1"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -184,17 +184,43 @@
             </objects>
             <point key="canvasLocation" x="1232.824427480916" y="-27.464788732394368"/>
         </scene>
-        <!--View Controller-->
+        <!--Search City View Controller-->
         <scene sceneID="AeC-Q0-jnl">
             <objects>
-                <viewController id="BWH-eo-CHZ" sceneMemberID="viewController">
+                <viewController id="BWH-eo-CHZ" customClass="SearchCityViewController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7eB-q6-sIf">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Type a city to search..." textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l5y-qI-VbQ">
+                                <rect key="frame" x="16" y="135" width="361" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-iv-nbp">
+                                <rect key="frame" x="16" y="185" width="361" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Search"/>
+                                <connections>
+                                    <action selector="searchButtonHandler:" destination="BWH-eo-CHZ" eventType="touchUpInside" id="u5f-IE-qF3"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="R5b-rQ-yfd"/>
                         <color key="backgroundColor" red="0.1058823466" green="0.109803915" blue="0.27450981740000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="R5b-rQ-yfd" firstAttribute="trailing" secondItem="l5y-qI-VbQ" secondAttribute="trailing" constant="16" id="4ii-eN-zBi"/>
+                            <constraint firstItem="l5y-qI-VbQ" firstAttribute="top" secondItem="R5b-rQ-yfd" secondAttribute="top" constant="32" id="V3G-m8-DnJ"/>
+                            <constraint firstItem="l5y-qI-VbQ" firstAttribute="leading" secondItem="R5b-rQ-yfd" secondAttribute="leading" constant="16" id="VCl-7r-nVW"/>
+                            <constraint firstItem="yrm-iv-nbp" firstAttribute="leading" secondItem="R5b-rQ-yfd" secondAttribute="leading" constant="16" id="Zto-kh-hs1"/>
+                            <constraint firstItem="R5b-rQ-yfd" firstAttribute="trailing" secondItem="yrm-iv-nbp" secondAttribute="trailing" constant="16" id="ZvH-6C-44v"/>
+                            <constraint firstItem="yrm-iv-nbp" firstAttribute="top" secondItem="l5y-qI-VbQ" secondAttribute="bottom" constant="16" id="cVx-5P-M1A"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="EiH-7e-K8x"/>
+                    <connections>
+                        <outlet property="searchCityInput" destination="l5y-qI-VbQ" id="8WI-xL-VDR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qdz-ox-yfV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
