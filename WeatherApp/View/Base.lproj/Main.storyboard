@@ -165,7 +165,7 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Barcelona" id="xYB-mU-HPA">
-                        <barButtonItem key="leftBarButtonItem" title="Item" image="location.fill" catalog="system" style="plain" id="pXf-O6-Tu2">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="location.fill" catalog="system" style="done" id="pXf-O6-Tu2">
                             <connections>
                                 <action selector="resetUserLocationHandler:" destination="BYZ-38-t0r" id="qAH-WT-bLy"/>
                             </connections>
