@@ -115,8 +115,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
 
             destination.searchCityCallback = { (searchedCity, searchedCountryCode) in
                 let splittedLocation = searchedCity.components(separatedBy: ", ")
-                self.cityName = splittedLocation[0]
-                self.countryName = splittedLocation[1]
+                self.cityName = splittedLocation[0].folding(options: .diacriticInsensitive, locale: .current)
+                self.countryName = splittedLocation[1].folding(options: .diacriticInsensitive, locale: .current)
                 self.countryCode = searchedCountryCode.lowercased()
                 
                 
