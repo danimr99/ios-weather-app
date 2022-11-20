@@ -12,6 +12,7 @@ class ForecastCell: UITableViewCell {
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var minTempLabel: UILabel!
     @IBOutlet weak var maxTempLabel: UILabel!
+    @IBOutlet weak var forecastImage: UIImageView!
     
     override func awakeFromNib() {
         super.awakeFromNib()

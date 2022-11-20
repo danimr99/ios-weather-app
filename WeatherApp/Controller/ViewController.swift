@@ -17,8 +17,9 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     @IBOutlet weak var weatherDescriptionLabel: UILabel!
     @IBOutlet weak var forecastTableView: UITableView!
     
+    
     // MARK: - Variables
-    var cityName: String = "Sabadell"
+    var cityName: String = "Barcelona"
     var forecastData: [ForecastData] = []
     
     /**
@@ -57,7 +58,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.dateLabel.text = convertedDate
         cell.minTempLabel.text = forecastItem.tempMin
         cell.maxTempLabel.text = forecastItem.tempMax
-                
+        cell.forecastImage.image = UIImage(named: self.getImageType(weatherDescription: forecastItem.weatherDescription!))
+        
         return cell
     }
     
@@ -72,31 +74,8 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.minTempLabel.text = "\(String(describing: response.tempMin!))ºC"
                 self.weatherDescriptionLabel.text = response.description!
                 
-                switch response.description {
-                    case "clear sky":
-                        self.weatherImage.image = UIImage(named: "sunny")
-                        break
-                        
-                    case "few clouds", "scattered clouds", "broken clouds":
-                        self.weatherImage.image = UIImage(named: "cloudy")
-                        break
-                        
-                    case "shower rain", "rain":
-                        self.weatherImage.image = UIImage(named: "rainy")
-                        break
-                        
-                    case "thunderstorm":
-                        self.weatherImage.image = UIImage(named: "storm")
-                        break
-                        
-                    case "snow":
-                        self.weatherImage.image = UIImage(named: "snow")
-                        break
-                        
-                    default:
-                        self.weatherImage.image = UIImage(named: "windy")
-                        break
-                }
+                self.weatherImage.image = UIImage(named: self.getImageType(weatherDescription: response.description!))
+ 
             }
         }
         
@@ -105,6 +84,28 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.forecastData = data
                 self.forecastTableView.reloadData()
             }
+        }
+    }
+    
+    private func getImageType(weatherDescription : String) -> String{
+        switch weatherDescription {
+            case "clear sky":
+                return "sunny"
+                
+            case "few clouds", "scattered clouds", "broken clouds":
+                return "cloudy"
+                
+            case "shower rain", "rain":
+                return "rainy"
+                
+            case "thunderstorm":
+                return "storm"
+                
+            case "snow":
+               return "snow"
+                
+            default:
+                return "windy"
         }
     }
 }

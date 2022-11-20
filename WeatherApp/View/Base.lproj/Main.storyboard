@@ -116,19 +116,19 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunny" translatesAutoresizingMaskIntoConstraints="NO" id="xcw-ZE-P6F">
-                                                    <rect key="frame" x="159" y="6" width="35" height="38"/>
+                                                    <rect key="frame" x="171" y="7.6666666666666679" width="35" height="35"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="height" constant="35" id="E9l-gy-63i"/>
-                                                        <constraint firstAttribute="width" constant="35" id="qvi-o9-RMj"/>
+                                                        <constraint firstAttribute="height" constant="35" id="Dn8-an-JY1"/>
+                                                        <constraint firstAttribute="width" relation="lessThanOrEqual" constant="35" id="WiY-JD-rRg"/>
+                                                        <constraint firstAttribute="width" secondItem="xcw-ZE-P6F" secondAttribute="height" multiplier="1:1" id="xh1-KV-NUu"/>
                                                     </constraints>
                                                 </imageView>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="fP2-jV-zVO" firstAttribute="top" secondItem="hJe-Es-Vw7" secondAttribute="top" constant="6" id="8Mo-Rd-LVV"/>
-                                                <constraint firstAttribute="bottom" secondItem="xcw-ZE-P6F" secondAttribute="bottom" constant="6" id="TYx-VR-bze"/>
                                                 <constraint firstItem="zhl-yi-eq9" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="xcw-ZE-P6F" secondAttribute="trailing" constant="12" id="ZIZ-kj-fd4"/>
+                                                <constraint firstItem="xcw-ZE-P6F" firstAttribute="centerY" secondItem="fP2-jV-zVO" secondAttribute="centerY" id="bqD-WI-l6o"/>
                                                 <constraint firstAttribute="bottom" secondItem="zhl-yi-eq9" secondAttribute="bottom" constant="6" id="dza-Ot-8LX"/>
-                                                <constraint firstItem="xcw-ZE-P6F" firstAttribute="top" secondItem="hJe-Es-Vw7" secondAttribute="top" constant="6" id="lOP-Jo-jTM"/>
                                                 <constraint firstItem="fP2-jV-zVO" firstAttribute="leading" secondItem="hJe-Es-Vw7" secondAttribute="leading" constant="12" id="lcV-k4-Cz3"/>
                                                 <constraint firstAttribute="bottom" secondItem="giJ-aT-OcQ" secondAttribute="bottom" constant="6" id="lna-rt-uJK"/>
                                                 <constraint firstAttribute="bottom" secondItem="fP2-jV-zVO" secondAttribute="bottom" constant="6" id="mqe-fD-TX7"/>
@@ -136,12 +136,13 @@
                                                 <constraint firstItem="zhl-yi-eq9" firstAttribute="top" secondItem="hJe-Es-Vw7" secondAttribute="top" constant="6" id="s9R-DR-Kcq"/>
                                                 <constraint firstItem="giJ-aT-OcQ" firstAttribute="leading" secondItem="zhl-yi-eq9" secondAttribute="trailing" constant="23" id="wJx-q6-Nzz"/>
                                                 <constraint firstItem="giJ-aT-OcQ" firstAttribute="top" secondItem="hJe-Es-Vw7" secondAttribute="top" constant="6" id="z4z-FG-5pM"/>
-                                                <constraint firstItem="xcw-ZE-P6F" firstAttribute="leading" secondItem="fP2-jV-zVO" secondAttribute="trailing" constant="12" id="zKF-t9-dAd"/>
+                                                <constraint firstItem="xcw-ZE-P6F" firstAttribute="leading" secondItem="fP2-jV-zVO" secondAttribute="trailing" constant="24" id="zKF-t9-dAd"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" red="0.1058823466" green="0.109803915" blue="0.27450981740000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <outlet property="dateLabel" destination="fP2-jV-zVO" id="TbT-H3-r8e"/>
+                                            <outlet property="forecastImage" destination="xcw-ZE-P6F" id="bPc-gS-3iA"/>
                                             <outlet property="maxTempLabel" destination="giJ-aT-OcQ" id="TUh-ad-dmk"/>
                                             <outlet property="minTempLabel" destination="zhl-yi-eq9" id="Toc-wF-qCf"/>
                                         </connections>
