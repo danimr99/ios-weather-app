@@ -133,6 +133,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
+    
     //MARK: - Location services
     private func setupLocationManager(){
         self.locationManager.delegate = self
@@ -154,6 +155,7 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
                 self.countryName = country
                 
                 self.setupView()
+                self.locationManager.stopUpdatingLocation()
             }
         }
     }
@@ -168,5 +170,10 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     
+    // MARK: - Handlers
+    
+    @IBAction func resetUserLocationHandler(_ sender: Any) {
+        self.setupLocationManager()
+    }
 }
 

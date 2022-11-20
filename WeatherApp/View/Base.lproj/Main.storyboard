@@ -165,6 +165,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Barcelona" id="xYB-mU-HPA">
+                        <barButtonItem key="leftBarButtonItem" title="Item" image="location.fill" catalog="system" style="plain" id="pXf-O6-Tu2">
+                            <connections>
+                                <action selector="resetUserLocationHandler:" destination="BYZ-38-t0r" id="qAH-WT-bLy"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="done" systemItem="search" id="eb7-gl-DKj">
                             <connections>
                                 <segue destination="BWH-eo-CHZ" kind="show" identifier="searchCity" id="xBk-7d-0F1"/>
@@ -249,6 +254,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="location.fill" catalog="system" width="128" height="119"/>
         <image name="sunny" width="512" height="512"/>
         <systemColor name="linkColor">
             <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
