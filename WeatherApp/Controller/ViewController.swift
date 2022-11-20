@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import MapKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate {
     // MARK: - Outlets
     @IBOutlet weak var weatherImage: UIImageView!
     @IBOutlet weak var currentTempLabel: UILabel!
@@ -19,18 +20,26 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
     
     
     // MARK: - Properties
-    var cityName: String = "Barcelona"
+    var cityName: String = "Madrid"
     var countryName: String = "España"
     var countryCode: String = "es"
     var forecastData: [ForecastData] = []
+    var locationManager =  CLLocationManager()
     
     // MARK: - View lifecycle methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.locationManager.requestWhenInUseAuthorization()
+        if self.locationManager.authorizationStatus == .authorizedWhenInUse {
+            self.setupLocationManager()
+        }
+        
+        
         // Delegate forecast table view
         self.forecastTableView.delegate = self
         self.forecastTableView.dataSource = self
+        
         
         setupView()
     }
@@ -124,5 +133,40 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
             }
         }
     }
+    //MARK: - Location services
+    private func setupLocationManager(){
+        self.locationManager.delegate = self
+        self.locationManager.distanceFilter = kCLDistanceFilterNone
+        self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        self.locationManager.startUpdatingLocation()
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        var location: CLLocation
+        
+        if !locations.isEmpty {
+            location =  locations.last!
+            fetchCityAndCountry(from: location) { city, isoCountryCode, country, error in
+                guard let city = city, let countryCode = isoCountryCode, let country = country, error == nil else { return }
+                
+                self.cityName = city.trimmingCharacters(in: .whitespaces)
+                self.countryCode = countryCode.trimmingCharacters(in: .whitespaces)
+                self.countryName = country
+                
+                self.setupView()
+            }
+        }
+    }
+  
+    func fetchCityAndCountry(from location: CLLocation, completion: @escaping (_ city: String?, _ isoCountryCode:  String?, _ country: String?, _ error: Error?) -> ()) {
+            CLGeocoder().reverseGeocodeLocation(location) { placemarks, error in
+                completion(placemarks?.first?.locality,
+                           placemarks?.first?.isoCountryCode,
+                           placemarks?.first?.country,
+                           error)
+                
+            }
+        }
+    
 }
 
